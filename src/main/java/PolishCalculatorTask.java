@@ -72,8 +72,8 @@ public class PolishCalculatorTask {
 
 
     private static List<String> readList(BufferedReader reader) throws IOException {
-        var lst = new ArrayList<String>();
-        var tokenizer = new StringTokenizer(reader.readLine());
+        final var lst = new ArrayList<String>();
+        final var tokenizer = new StringTokenizer(reader.readLine());
         while (tokenizer.hasMoreTokens()) {
             lst.add(tokenizer.nextToken());
         }

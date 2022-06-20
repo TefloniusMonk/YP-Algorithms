@@ -7,19 +7,19 @@ public class CollapseIntervals {
     public static List<Interval> collapseIntervals(List<Interval> intervals){
         if (intervals.size() == 1) return intervals;
 
-        LinkedList<Interval> sorted = intervals.stream()
+        final LinkedList<Interval> sorted = intervals.stream()
                 .sorted(Comparator.comparing(Interval::getStart))
                 .collect(Collectors.toCollection(LinkedList::new));
 
 
-        LinkedList<Interval> result = new LinkedList();
+        final LinkedList<Interval> result = new LinkedList();
         while(!sorted.isEmpty()){
-            Interval cur = sorted.pollFirst();
+            final Interval cur = sorted.pollFirst();
             if (sorted.isEmpty()){
                 result.add(cur);
                 break;
             }
-            Interval next = sorted.pollFirst();
+            final Interval next = sorted.pollFirst();
             if (cur.isOverlap(next)){
                 cur.merge(next);
                 sorted.offerFirst(cur);
@@ -37,7 +37,7 @@ class Interval {
     private int end;
 
     public Interval(String str){
-        String[] split = str.split(" ");
+        final String[] split = str.split(" ");
         start = Integer.parseInt(split[0]);
         end = Integer.parseInt(split[1]);
     }

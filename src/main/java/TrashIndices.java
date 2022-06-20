@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-import java.util.stream.Collectors;
 
 import static java.lang.Math.abs;
 
@@ -13,8 +12,9 @@ public class TrashIndices {
         int low = findMinDif(arr);
         int hi = abs(arr[arr.length - 1] - arr[0]);
         while (low < hi) {
-            int mid = (low + hi) / 2;
-            if (countPairWithDiffLessOrEq(arr, mid) < k) {
+            final int mid = (low + hi) / 2;
+            final long countOfPairsLessOrEq = countPairWithDiffLessOrEq(arr,mid);
+            if (countOfPairsLessOrEq < k) {
                 low = mid + 1;
             } else {
                 hi = mid;
@@ -23,8 +23,8 @@ public class TrashIndices {
         return low;
     }
 
-    private static int countPairWithDiffLessOrEq(int[] arr, int mid) {
-        int res = 0;
+    private static long countPairWithDiffLessOrEq(int[] arr, int mid) {
+        long res = 0;
         for (int i = 0; i < arr.length; i++) {
             res += upperBound(arr, i, arr[i] + mid) - i - 1;
         }
@@ -34,7 +34,7 @@ public class TrashIndices {
     private static int upperBound(int[] arr, int start, int val) {
         int hi = arr.length;
         while (start < hi){
-            int mid = (start + hi) / 2;
+            final int mid = (start + hi) / 2;
             if (val >= arr[mid]){
                 start = mid + 1;
             } else {
@@ -49,7 +49,7 @@ public class TrashIndices {
         int i = 0;
         int j = 1;
         while (j < arr.length) {
-            int dif = abs(arr[j] - arr[i]);
+            final int dif = abs(arr[j] - arr[i]);
             if (dif < min) {
                 min = dif;
             }
@@ -69,9 +69,9 @@ public class TrashIndices {
     }
 
     private static int[] readList(BufferedReader reader, int size) throws IOException {
-        int[] arr = new int[size];
+        final int[] arr = new int[size];
         int i = 0;
-        StringTokenizer st = new StringTokenizer(reader.readLine());
+        final StringTokenizer st = new StringTokenizer(reader.readLine());
         while (st.hasMoreTokens()) {
             arr[i] = Integer.parseInt(st.nextToken());
             i++;

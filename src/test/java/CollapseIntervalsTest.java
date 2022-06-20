@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CollapseIntervalsTest {
     @Test
     void shouldMerge() {
-        var lst = Stream.of(
+        final var lst = Stream.of(
                         "7 8",
                         "7 8",
                         "2 3",
@@ -17,8 +17,8 @@ class CollapseIntervalsTest {
                 )
                 .map(Interval::new)
                 .collect(Collectors.toList());
-        var actual = CollapseIntervals.collapseIntervals(lst).stream().map(Interval::format).collect(Collectors.joining(","));
-        var expected = "2 3,6 10";
+        final var actual = CollapseIntervals.collapseIntervals(lst).stream().map(Interval::format).collect(Collectors.joining(","));
+        final var expected = "2 3,6 10";
         assertEquals(expected, actual);
     }
 }

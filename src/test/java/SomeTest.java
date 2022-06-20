@@ -25,8 +25,8 @@ public class SomeTest {
         if (startIncluded == endIncluded && lst.get(startIncluded) >= val) return startIncluded;
         if (startIncluded >= endIncluded) return -1;
 
-        var pivotIdx = (startIncluded + endIncluded) / 2;
-        var pivot = lst.get(pivotIdx);
+        final var pivotIdx = (startIncluded + endIncluded) / 2;
+        final var pivot = lst.get(pivotIdx);
         if (val <= pivot) {
             return search(lst, startIncluded, pivotIdx, val);
         }
@@ -59,8 +59,8 @@ public class SomeTest {
     }
 
     private static List<Integer> readList(BufferedReader reader) throws IOException {
-        var lst = new ArrayList<Integer>();
-        var st = new StringTokenizer(reader.readLine());
+        final var lst = new ArrayList<Integer>();
+        final var st = new StringTokenizer(reader.readLine());
         while (st.hasMoreTokens()) {
             lst.add(Integer.parseInt(st.nextToken()));
         }
@@ -69,10 +69,10 @@ public class SomeTest {
 
     @Test
     void test() {
-        var lst = List.of(1, 2, 4, 4, 4, 4);
-        var cost = 3;
-        var expected = "3 -1";
-        var actual = getResult(lst, cost);
+        final var lst = List.of(1, 2, 4, 4, 4, 4);
+        final var cost = 3;
+        final var expected = "3 -1";
+        final var actual = getResult(lst, cost);
         Assertions.assertEquals(expected, actual);
     }
 }

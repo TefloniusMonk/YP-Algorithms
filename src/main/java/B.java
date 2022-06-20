@@ -71,7 +71,7 @@ public class B {
     }
 
     private static List<List<Integer>> readMatrix(BufferedReader reader, int rowsCount) throws IOException {
-        List<List<Integer>> matrix = new ArrayList<>(rowsCount);
+        final List<List<Integer>> matrix = new ArrayList<>(rowsCount);
         for (int i = 0; i < rowsCount; i++) {
             matrix.add(readList(reader));
         }

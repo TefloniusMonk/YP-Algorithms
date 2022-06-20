@@ -25,10 +25,10 @@ public class A {
     }
 
     private static Map<String, Integer> readAndCount(BufferedReader reader) throws IOException {
-        var map = new HashMap<String, Integer>();
-        var st = new StringTokenizer(reader.readLine());
+        final var map = new HashMap<String, Integer>();
+        final var st = new StringTokenizer(reader.readLine());
         while (st.hasMoreTokens()) {
-            var next = st.nextToken();
+            final var next = st.nextToken();
             map.put(next, map.getOrDefault(next,0) + 1);
         }
         return map;
