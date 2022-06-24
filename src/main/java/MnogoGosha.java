@@ -4,28 +4,26 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class MnogoGosha {
-    private static final long Q1 = 31;
-    private static final long Q2 = 37;
-    private static final long MOD = (long) Math.pow(10, 9) + 7;
+    private static final long Q = (long) Math.pow(10, 9) + 7;
+    private static final long MOD = (long) Math.pow(2, 32);
 
-    private static long pow(long q, int n) {
+    private static long pow(int n) {
         long pow = 1;
         for (int i = 1; i < n; i++) {
-            pow = pow * q % MOD;
+            pow = pow * Q % MOD;
         }
         return pow;
     }
 
-    private static long hash(long q, String str) {
+    private static long hash(String str) {
         long hash = 0;
         for (int i = 1; i <= str.length(); i++) {
-            hash = hash * q % MOD + str.charAt(i - 1) % MOD;
+            hash = hash * Q % MOD + str.charAt(i - 1) % MOD;
         }
         return hash;
     }
@@ -34,24 +32,21 @@ public class MnogoGosha {
         if (len > str.length()) {
             return Collections.emptyList();
         }
-
-        final var substr = str.substring(0, len);
-        // Use two hashes to prevent collisions
-        final long pow1 = pow(Q1, len);
-        long hash1 = hash(Q1, substr);
-        final long pow2 = pow(Q2, len);
-        long hash2 = hash(Q2, substr);
-
+        final long pow = pow(len);
+        long hash = hash(str.substring(0, len));
         final var map = new LinkedHashMap<Long, Tuple>();
-        map.put(fullHash(hash1, hash2), new Tuple(0).inc());
+        map.put(hash, new Tuple(0).inc());
         for (int i = 1; i < str.length() - len; i++) {
             final var prevCh = str.charAt(i - 1);
             final var nextCh = str.charAt(i + len - 1);
-
-            hash1 = (((hash1 - (prevCh * pow1 % MOD) + MOD) % MOD) * Q1 % MOD + nextCh + MOD) % MOD;
-            hash2 = (((hash2 - (prevCh * pow2 % MOD) + MOD) % MOD) * Q2 % MOD + nextCh + MOD) % MOD;
-
-            map.put(fullHash(hash1, hash2), map.getOrDefault(fullHash(hash1, hash2), new Tuple(i)).inc());
+            hash = (((hash - (prevCh * pow % MOD) + MOD) % MOD) * Q % MOD + nextCh + MOD) % MOD;
+            if (map.containsKey(hash)) {
+                if (eq(str, len, map.get(hash).firstIdx, i)) {
+                    map.put(hash, map.get(hash).inc());
+                }
+            } else {
+                map.put(hash, new Tuple(i).inc());
+            }
         }
 
         return map.values().stream()
@@ -60,8 +55,17 @@ public class MnogoGosha {
                 .collect(Collectors.toList());
     }
 
-    private static long fullHash(long hash1, long hash2) {
-        return (hash1 + hash2) % MOD;
+    private static boolean eq(String str, int len, int firstIdx, int i) {
+        int j = 0;
+        while (j < len) {
+            if (str.charAt(firstIdx) != str.charAt(i)) {
+                return false;
+            }
+            firstIdx++;
+            i++;
+            j++;
+        }
+        return true;
     }
 
     public static void main(String[] args) throws IOException {
