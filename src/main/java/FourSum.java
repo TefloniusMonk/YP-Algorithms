@@ -63,6 +63,23 @@ public class FourSum {
     private static List<Integer> readList(BufferedReader reader) throws IOException {
         return Arrays.stream(reader.readLine().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    private static class Pair {
+        public final int left;
+        public final int right;
+
+        public Pair(int i1, int i2) {
+            this.left = i1;
+            this.right = i2;
+        }
+
+        public boolean differ(Pair other) {
+            return left != other.left &&
+                    left != other.right &&
+                    right != other.left &&
+                    right != other.right;
+        }
+    }
 }
 
 class Four {
@@ -95,21 +112,8 @@ class Four {
     public String toString() {
         return Arrays.stream(four).mapToObj(String::valueOf).collect(Collectors.joining(" "));
     }
+
+
 }
 
-class Pair {
-    public final int left;
-    public final int right;
 
-    public Pair(int i1, int i2) {
-        this.left = i1;
-        this.right = i2;
-    }
-
-    public boolean differ(Pair other) {
-        return left != other.left &&
-                left != other.right &&
-                right != other.left &&
-                right != other.right;
-    }
-}
