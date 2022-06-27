@@ -11,13 +11,13 @@ public class TrashIndices {
         Arrays.sort(arr);
         int low = findMinDif(arr);
         int hi = abs(arr[arr.length - 1] - arr[0]);
-        while (low < hi) {
+        while (low <= hi) {
             final int mid = (low + hi) / 2;
             final long countOfPairsLessOrEq = countPairWithDiffLessOrEq(arr,mid);
             if (countOfPairsLessOrEq < k) {
                 low = mid + 1;
             } else {
-                hi = mid;
+                hi = mid - 1;
             }
         }
         return low;
@@ -32,13 +32,13 @@ public class TrashIndices {
     }
 
     private static int upperBound(int[] arr, int start, int val) {
-        int hi = arr.length;
-        while (start < hi){
+        int hi = arr.length -1;
+        while (start <= hi){
             final int mid = (start + hi) / 2;
             if (val >= arr[mid]){
                 start = mid + 1;
             } else {
-                hi = mid;
+                hi = mid - 1;
             }
         }
         return start;

@@ -17,7 +17,6 @@ public abstract class AbstractInputWrapperTest {
 
     protected String getExpectedFilePath() {
         return Paths.get("src", "test", "resources", dirname(), "ex").toAbsolutePath().toString();
-
     }
 
     protected void test(int testIdx, ThrowingFunction<InputStream, Object> testMethod) {

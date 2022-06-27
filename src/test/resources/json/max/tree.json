@@ -1,0 +1,19 @@
+{
+  "value": 1000,
+  "left": {
+    "value": 2001,
+    "left": {
+      "value": 3003,
+      "left": {
+        "value": 4001,
+        "right": {
+          "value" : 5001
+        }
+      }
+    },
+    "right": {
+      "value": 3004
+    }
+  },
+  "right": null
+}
