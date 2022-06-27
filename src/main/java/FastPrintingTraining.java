@@ -21,7 +21,7 @@ import java.io.IOException;
 
 
 // ID = 68956740
-public class B {
+public class FastPrintingTraining {
 
     private static Integer getScore(List<List<Integer>> matrix,
                                     int keysPerPerson, int personCount) {
