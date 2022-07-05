@@ -8,31 +8,37 @@ public class Node implements Serializable {
      Node right;
 
      @JsonCreator
-    private Node() {
+     public Node() {
     }
 
-
-    private void setValue(int value) {
+    public Node(Node left, Node right, int value) {
         this.value = value;
-    }
-
-    private void setLeft(Node left) {
         this.left = left;
-    }
-
-    private void setRight(Node right) {
         this.right = right;
     }
 
-    private int getValue() {
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
+    }
+
+    public int getValue() {
         return value;
     }
 
-    private Node getLeft() {
+    public Node getLeft() {
         return left;
     }
 
-    private Node getRight() {
+    public Node getRight() {
         return right;
     }
 }

@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -111,7 +112,7 @@ class PolyHashTest {
                 randomString(1, maxStrLen),
                 randomString(1, maxStrLen)
         );
-        final var firstHashes = firstStrings.stream().map(str -> PolyHash.polyHash(a, m, str)).toList();
+        final var firstHashes = firstStrings.stream().map(str -> PolyHash.polyHash(a, m, str)).collect(Collectors.toList());
         final var firstStr = new AtomicReference<String>();
         final var secondStr = new AtomicReference<String>();
         final var stopFlag = new AtomicBoolean(false);

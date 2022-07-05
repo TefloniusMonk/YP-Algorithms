@@ -1,0 +1,107 @@
+{
+  "value": 100,
+  "size": 22,
+  "left": {
+    "value": 50,
+    "size": 15,
+    "left": {
+      "value": 4,
+      "size": 11,
+      "left": {
+        "value": 1,
+        "size": 2,
+        "left": null,
+        "right": {
+          "value": 2,
+          "size": 1
+        }
+      },
+      "right": {
+        "value": 8,
+        "size": 8,
+        "left": {
+          "value": 5,
+          "size": 1,
+          "left": null,
+          "right": null
+        },
+        "right": {
+          "value": 15,
+          "size": 5,
+          "left": {
+            "value": 11,
+            "size": 2,
+            "left": {
+              "value": 9,
+              "size": 1
+            },
+            "right": null
+          },
+          "right": {
+            "value": 20,
+            "size": 3,
+            "left": {
+              "value": 17,
+              "size": 2,
+              "left": null,
+              "right": {
+                "value": 18,
+                "size": 1,
+                "left": null,
+                "right": null
+              }
+            },
+            "right": null
+          }
+        }
+      }
+    },
+    "right": {
+      "value": 99,
+      "size": 4,
+      "left": {
+        "value": 55,
+        "size": 3,
+        "left": null,
+        "right": {
+          "value": 70,
+          "size": 2,
+          "left": null,
+          "right": {
+            "value": 72,
+            "size": 1,
+            "left": null,
+            "right": null
+          }
+        }
+      },
+      "right": null
+    }
+  },
+  "right": {
+    "value": 150,
+    "size": 5,
+    "left": {
+      "value": 101,
+      "size": 1,
+      "left": null,
+      "right": null
+    },
+    "right": {
+      "value": 200,
+      "size": 23,
+      "left": {
+        "value": 175,
+        "size": 1,
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "value": 300,
+        "size": 1,
+        "left": null,
+        "right": null
+      }
+    }
+  }
+}
