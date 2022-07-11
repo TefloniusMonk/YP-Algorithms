@@ -3,11 +3,14 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public abstract class AbstractInputWrapperTest {
 
+    abstract ThrowingFunction<InputStream, Object> testingMethod();
 
     abstract String dirname();
 
@@ -19,15 +22,18 @@ public abstract class AbstractInputWrapperTest {
         return Paths.get("src", "test", "resources", dirname(), "ex").toAbsolutePath().toString();
     }
 
-    protected void test(int testIdx, ThrowingFunction<InputStream, Object> testMethod) {
+    protected void test(int testIdx) {
         try {
             final var is = new FileInputStream(getInFilePath() + testIdx);
-            final var actual = String.valueOf(testMethod.apply(is));
-            final var expected = String.join("\n", Files.readAllLines(
-                    Path.of(getExpectedFilePath() + testIdx)));
+            final var actual = stripAllLines(String.valueOf(testingMethod().apply(is)));
+            final var expected = stripAllLines(String.join("\n", Files.readAllLines(Path.of(getExpectedFilePath() + testIdx))));
             assertEquals(expected, actual);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String stripAllLines(String str) {
+        return Arrays.stream(str.split("\n")).map(String::trim).collect(Collectors.joining("\n"));
     }
 }

@@ -4,35 +4,37 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CommonSubArrayTest extends AbstractInputWrapperTest{
+class MinDistanceTest extends AbstractInputWrapperTest {
 
     @Override
     ThrowingFunction<InputStream, Object> testingMethod() {
-        return CommonSubArray::inputWrapper;
+        return MinDistance::wrap;
     }
 
     @Override
     String dirname() {
-        return "subarray";
+        return "min-dist";
     }
 
     @Test
-    void shouldFindMaxSubArraySize1(){
+    void test1() {
         test(1);
     }
 
     @Test
-    void shouldFindMaxSubArraySize2(){
+    void test2() {
         test(2);
     }
 
     @Test
-    void shouldFindMaxSubArraySize3(){
+    void test3() {
         test(3);
     }
 
     @Test
-    void shouldFindMaxSubArraySize4(){
+    void test4() {
         test(4);
     }
+
+
 }

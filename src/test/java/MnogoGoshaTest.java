@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -10,23 +11,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MnogoGoshaTest extends AbstractInputWrapperTest {
     @Override
+    ThrowingFunction<InputStream, Object> testingMethod() {
+        return MnogoGosha::inputWrapper;
+    }
+
+    @Override
     String dirname() {
         return "mnogo";
     }
 
     @Test
     void shouldFind1() {
-        test(1, MnogoGosha::inputWrapper);
+        test(1);
     }
 
     @Test
     void shouldFind2() {
-        test(2, MnogoGosha::inputWrapper);
+        test(2);
     }
 
     @Test
     void shouldFind3() {
-        test(3, MnogoGosha::inputWrapper);
+        test(3);
     }
 
     @Test

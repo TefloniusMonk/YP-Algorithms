@@ -2,12 +2,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -23,10 +21,10 @@ class RemoveNodeTest {
         pretty = mapper.writerWithDefaultPrettyPrinter();
     }
 
-    protected RemoveNode.Node createTree(String filename) {
+    protected Node createTree(String filename) {
         try {
             return mapper.readValue(new File(Paths.get("src", "test", "resources", "json", "remove-node", filename)
-                    .toAbsolutePath().toString()), RemoveNode.Node.class);
+                    .toAbsolutePath().toString()), Node.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -91,7 +89,7 @@ class RemoveNodeTest {
 
     @Test
     void shouldRemove6() throws Exception {
-        final RemoveNode.Node root = null;
+        final Node root = null;
         final var expected = root;
         final var actualRoot = RemoveNode.remove(root, 4);
         assertEquals(pretty.writeValueAsString(expected), pretty.writeValueAsString(actualRoot));
