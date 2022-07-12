@@ -7,15 +7,15 @@
 
     using namespace std;
 
-    string find_min_distance();
+    string find_max_distance();
 
 
     int main() {
-        cout << find_min_distance() << endl;
+        cout << find_max_distance() << endl;
         return 0;
     }
 
-    std::string find_min_distance() {
+    std::string find_max_distance() {
         int vertexes, edges;
         cin >> vertexes >> edges;
         unordered_map<int, vector<int> > graph;

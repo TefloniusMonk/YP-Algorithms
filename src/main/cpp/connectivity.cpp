@@ -5,7 +5,7 @@
 #include <sstream>
 #include <stack>
 
-std::string wrap();
+std::string find_connectivity();
 
 using namespace std;
 

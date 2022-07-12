@@ -2,16 +2,18 @@ import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 
-class FullGraphTest extends AbstractInputWrapperTest{
+import static org.junit.jupiter.api.Assertions.*;
+
+class BipartiteTest extends AbstractInputWrapperTest{
 
     @Override
     ThrowingFunction<InputStream, Object> testingMethod() {
-        return FullGraph::wrap;
+        return Bipartite::wrap;
     }
 
     @Override
     String dirname() {
-        return "full-graph";
+        return "bipartite";
     }
 
     @Test
@@ -22,15 +24,5 @@ class FullGraphTest extends AbstractInputWrapperTest{
     @Test
     void test2() {
         test(2);
-    }
-
-    @Test
-    void test3() {
-        test(3);
-    }
-
-    @Test
-    void test4() {
-        test(4);
     }
 }

@@ -2,17 +2,20 @@ import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 
-class FullGraphTest extends AbstractInputWrapperTest{
+import static org.junit.jupiter.api.Assertions.*;
+
+class NearestSightsTest extends AbstractInputWrapperTest{
 
     @Override
     ThrowingFunction<InputStream, Object> testingMethod() {
-        return FullGraph::wrap;
+        return NearestSights::wrap;
     }
 
     @Override
     String dirname() {
-        return "full-graph";
+        return "sights";
     }
+
 
     @Test
     void test1() {
@@ -27,10 +30,5 @@ class FullGraphTest extends AbstractInputWrapperTest{
     @Test
     void test3() {
         test(3);
-    }
-
-    @Test
-    void test4() {
-        test(4);
     }
 }

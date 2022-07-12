@@ -8,19 +8,19 @@
 
 using namespace std;
 
-string find_min_distance();
+string in_out_time();
 
 const int WHITE = -1;
 const int BLACK = 1;
 const int GRAY = 0;
 
 int main() {
-    cout << find_min_distance() << endl;
+    cout << in_out_time() << endl;
     return 0;
 }
 
 
-string find_min_distance() {
+string in_out_time() {
     int vertexes, edges;
     cin >> vertexes >> edges;
     unordered_map<int, set<int, greater<int> > > graph;
