@@ -1,4 +1,4 @@
-package dp;
+package all;
 
 import base.AbstractInputWrapperTest;
 import base.ThrowingFunction;
@@ -8,16 +8,16 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RestaurantTest extends AbstractInputWrapperTest {
+class RomanDigitsTest extends AbstractInputWrapperTest {
 
     @Override
     protected ThrowingFunction<InputStream, Object> testingMethod() {
-        return Restaurant::wrap;
+        return RomanDigits::wrap;
     }
 
     @Override
     protected String dirname() {
-        return "restaurant";
+        return "roman";
     }
 
     @Test
@@ -33,10 +33,5 @@ class RestaurantTest extends AbstractInputWrapperTest {
     @Test
     void test3() {
         test(3);
-    }
-
-    @Test
-    void test4() {
-        test(4);
     }
 }

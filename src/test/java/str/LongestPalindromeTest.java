@@ -1,4 +1,4 @@
-package dp;
+package str;
 
 import base.AbstractInputWrapperTest;
 import base.ThrowingFunction;
@@ -8,16 +8,16 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RestaurantTest extends AbstractInputWrapperTest {
+class LongestPalindromeTest extends AbstractInputWrapperTest {
 
     @Override
     protected ThrowingFunction<InputStream, Object> testingMethod() {
-        return Restaurant::wrap;
+        return LongestPalindrome::wrap;
     }
 
     @Override
     protected String dirname() {
-        return "restaurant";
+        return "long-palindrome";
     }
 
     @Test

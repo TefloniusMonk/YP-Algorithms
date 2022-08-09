@@ -1,4 +1,4 @@
-package dp;
+package str;
 
 import base.AbstractInputWrapperTest;
 import base.ThrowingFunction;
@@ -6,18 +6,16 @@ import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class RestaurantTest extends AbstractInputWrapperTest {
+class CheatSheetTest extends AbstractInputWrapperTest {
 
     @Override
     protected ThrowingFunction<InputStream, Object> testingMethod() {
-        return Restaurant::wrap;
+        return CheatSheet::wrap;
     }
 
     @Override
     protected String dirname() {
-        return "restaurant";
+        return "cheat-sheet";
     }
 
     @Test
@@ -38,5 +36,10 @@ class RestaurantTest extends AbstractInputWrapperTest {
     @Test
     void test4() {
         test(4);
+    }
+
+    @Test
+    void test5() {
+        test(5);
     }
 }
